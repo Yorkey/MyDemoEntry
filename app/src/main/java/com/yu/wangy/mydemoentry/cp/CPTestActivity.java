@@ -1,10 +1,8 @@
 package com.yu.wangy.mydemoentry.cp;
 
 import android.content.ContentValues;
-import android.database.ContentObserver;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.util.Log;
