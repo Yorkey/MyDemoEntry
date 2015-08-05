@@ -26,7 +26,7 @@ import java.util.Map;
  */
 public class MainActivity extends AppCompatActivity {
 
-
+    public static final String TAG = "MainActivity";
     public static final String CATEGORY_PATH = "com.yu.wangy.mydemoentry.path";
     public static final String CATEGORY_DEMO = "com.yu.wangy.mydemoentry.DEMO_CODE";
 
@@ -87,14 +87,15 @@ public class MainActivity extends AppCompatActivity {
         int index = (listPath==null ? 0 : listPathArray.length);
 
         Map<String, Boolean> listItemFlag = new HashMap<String, Boolean>();
-        for(int i=0; i<listInfo.size(); ++i) {
-            ResolveInfo info = listInfo.get(i);
-            CharSequence lableSeq = info.loadLabel(pm);
-            String infoLabel = (lableSeq!=null ? lableSeq.toString() : info.activityInfo.name);
-            Log.d("MainActivity", "infoLabel:" + infoLabel);
+        for(ResolveInfo info : listInfo) {
+            CharSequence labelSeq = info.loadLabel(pm);
+            String infoLabel = (labelSeq!=null ? labelSeq.toString() : info.activityInfo.name);
+            Log.d(TAG, "infoLabel:" + infoLabel);
+
             if(index==0 || infoLabel.startsWith(listPath)) {
                 String[] labelPathArray = infoLabel.split("/");
-                Log.d("MainActivity", "labelPathArray:"+labelPathArray.length);
+                Log.d(TAG, "labelPathArray:"+labelPathArray.length);
+
                 String listLabel = labelPathArray[index];
                 if(index == labelPathArray.length-1) {
                     addItem(listData, listLabel,
