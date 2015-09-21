@@ -6,4 +6,5 @@
     <string name="title_activity_dialog_test">ui/DialogTest</string>
     <string name="title_activity_cp_test">cp/CPTestActivity</string>
     <string name="title_activity_intent_test">utils/IntentTest</string>
+    <string name="title_activity_utils_test">UtilsTest</string>
 </resources>

@@ -82,6 +82,27 @@ public class ImageHelper {
                 case ExifInterface.ORIENTATION_FLIP_HORIZONTAL:
                     bitmapMatrix.postScale(-1, 1);
                     break;
+                case ExifInterface.ORIENTATION_ROTATE_180:
+                    bitmapMatrix.postRotate(180);
+                    break;
+                case ExifInterface.ORIENTATION_FLIP_VERTICAL:
+                    bitmapMatrix.postRotate(180);
+                    bitmapMatrix.postScale(-1, 1);
+                    break;
+                case ExifInterface.ORIENTATION_TRANSPOSE:
+                    bitmapMatrix.postRotate(90);
+                    bitmapMatrix.postScale(-1, 1);
+                    break;
+                case ExifInterface.ORIENTATION_ROTATE_90:
+                    bitmapMatrix.postRotate(90);
+                    break;
+                case ExifInterface.ORIENTATION_TRANSVERSE:
+                    bitmapMatrix.postRotate(270);
+                    bitmapMatrix.postScale(-1, 1);
+                    break;
+                case ExifInterface.ORIENTATION_ROTATE_270:
+                    bitmapMatrix.postRotate(270);
+                    break;
             }
             return Bitmap.createBitmap(src, 0, 0, src.getWidth(), src.getHeight(), bitmapMatrix, false);
         } catch (Exception e) {
@@ -117,12 +138,12 @@ public class ImageHelper {
         try {
             ExifInterface exif = new ExifInterface(filename);
             String exifOrientation = exif.getAttribute(ExifInterface.TAG_ORIENTATION);
-            int orientation = 0;
             if (exifOrientation != null) {
-                if (exifOrientation.equals("5") ||
-                        exifOrientation.equals("6") ||
-                        exifOrientation.equals("7") ||
-                        exifOrientation.equals("8")) {
+                int orientation = Integer.parseInt(exifOrientation);
+                if (orientation == ExifInterface.ORIENTATION_TRANSPOSE ||
+                        orientation == ExifInterface.ORIENTATION_ROTATE_90 ||
+                        orientation == ExifInterface.ORIENTATION_TRANSVERSE ||
+                        orientation == ExifInterface.ORIENTATION_ROTATE_270) {
                     w = options.outHeight;
                     h= options.outWidth;
                 }
