@@ -85,16 +85,15 @@ public class UtilsTestFragment extends Fragment {
                 }
 
                 String picname = new SimpleDateFormat("yyyyMMdd_hhmmss").format(new Date()) + ".jpg";
-                String dir = Environment.getExternalStorageDirectory().getPath();
-                Log.d(TAG, "sdcard path=" + dir);
-                dir = dir + "/myImg";
+                String dir = Environment.getExternalStorageDirectory() + "/myImg/";
+                Log.d(TAG, "dir path=" + dir);
                 File imgdir = new File(dir);
-                if (!imgdir.isDirectory())
+                if (!imgdir.exists())
                 {
-                    Log.d(TAG, "imgdir doesn't dir, mkdirs = " + imgdir.mkdirs());
+                    Log.d(TAG, "imgdir doesn't exists, mkdirs = " + imgdir.mkdirs());
                 }
 
-                String filename = dir + '/' + picname;
+                String filename = dir + picname;
                 Log.d(TAG, "take pic store path=" + filename);
 
                 Bundle bundle = data.getExtras();
