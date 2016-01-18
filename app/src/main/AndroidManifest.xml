@@ -57,6 +57,16 @@
             android:label="@string/title_activity_utils_test" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.yu.wangy.mydemoentry.DEMO_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.CustomViewTestActivity"
+            android:label="@string/title_activity_custom_view_test" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.yu.wangy.mydemoentry.DEMO_CODE" />
             </intent-filter>
         </activity>
